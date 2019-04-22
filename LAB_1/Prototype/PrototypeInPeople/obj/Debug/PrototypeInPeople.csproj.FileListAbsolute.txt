@@ -1,0 +1,7 @@
+C:\Users\MastadonT\Desktop\TMPS-master\DesignPatterns-master\Prototype\PrototypeInPeople\bin\Debug\PrototypeInPeople.exe.config
+C:\Users\MastadonT\Desktop\TMPS-master\DesignPatterns-master\Prototype\PrototypeInPeople\bin\Debug\PrototypeInPeople.exe
+C:\Users\MastadonT\Desktop\TMPS-master\DesignPatterns-master\Prototype\PrototypeInPeople\bin\Debug\PrototypeInPeople.pdb
+C:\Users\MastadonT\Desktop\TMPS-master\DesignPatterns-master\Prototype\PrototypeInPeople\obj\Debug\PrototypeInPeople.csprojAssemblyReference.cache
+C:\Users\MastadonT\Desktop\TMPS-master\DesignPatterns-master\Prototype\PrototypeInPeople\obj\Debug\PrototypeInPeople.csproj.CoreCompileInputs.cache
+C:\Users\MastadonT\Desktop\TMPS-master\DesignPatterns-master\Prototype\PrototypeInPeople\obj\Debug\PrototypeInPeople.exe
+C:\Users\MastadonT\Desktop\TMPS-master\DesignPatterns-master\Prototype\PrototypeInPeople\obj\Debug\PrototypeInPeople.pdb

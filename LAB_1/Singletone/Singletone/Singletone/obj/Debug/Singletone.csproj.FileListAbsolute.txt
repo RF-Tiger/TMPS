@@ -1,0 +1,7 @@
+C:\Users\MastadonT\Desktop\LAB_1\Singletone\Singletone\Singletone\bin\Debug\Singletone.exe.config
+C:\Users\MastadonT\Desktop\LAB_1\Singletone\Singletone\Singletone\bin\Debug\Singletone.exe
+C:\Users\MastadonT\Desktop\LAB_1\Singletone\Singletone\Singletone\bin\Debug\Singletone.pdb
+C:\Users\MastadonT\Desktop\LAB_1\Singletone\Singletone\Singletone\obj\Debug\Singletone.csprojAssemblyReference.cache
+C:\Users\MastadonT\Desktop\LAB_1\Singletone\Singletone\Singletone\obj\Debug\Singletone.csproj.CoreCompileInputs.cache
+C:\Users\MastadonT\Desktop\LAB_1\Singletone\Singletone\Singletone\obj\Debug\Singletone.exe
+C:\Users\MastadonT\Desktop\LAB_1\Singletone\Singletone\Singletone\obj\Debug\Singletone.pdb

@@ -1,0 +1,6 @@
+C:\Users\MastadonT\Desktop\10_BuilderSample\BuilderSample\bin\Debug\BuilderSample.exe
+C:\Users\MastadonT\Desktop\10_BuilderSample\BuilderSample\bin\Debug\BuilderSample.pdb
+C:\Users\MastadonT\Desktop\10_BuilderSample\BuilderSample\obj\x86\Debug\BuilderSample.csprojAssemblyReference.cache
+C:\Users\MastadonT\Desktop\10_BuilderSample\BuilderSample\obj\x86\Debug\BuilderSample.csproj.CoreCompileInputs.cache
+C:\Users\MastadonT\Desktop\10_BuilderSample\BuilderSample\obj\x86\Debug\BuilderSample.exe
+C:\Users\MastadonT\Desktop\10_BuilderSample\BuilderSample\obj\x86\Debug\BuilderSample.pdb
