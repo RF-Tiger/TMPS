@@ -1,5 +1,5 @@
 # Лабораторная работа №1
-_Подготовил студент группы TI-164, Фридман Станислав_
+_Подготовил студент группы TI-164, Дрегля Дмитрий_
 ## Задание 
 Целью данной лабораторной работы было имплементировать 5 порождающих шабловнов
 
@@ -41,216 +41,303 @@ Builder - это порождающий паттерн проектирован�
 
 # Lab1_TMPS_AbstractFactory
 
-Сначала объявлен интерфейс:
 
-```java
-public interface AnimalSound {
-        void say();
-    }
-```
+Создаем классы, использующиеся в данном проекте : AbstractBottle, AbstractFactory, AbstractWater, Client:
 
-Затем создаем классы, имплементриющие этот интерфейс: Cat, Dog, BigCat, BigDog:
-
-```java
-public static class Cat implements AnimalSound {
-        @Override
-        public void say() {
-            System.out.println("Meow");
+```C#
+    public class CocaColaBottle : AbstractBottle
+    {
+        public override void Interact(AbstractWater water)
+        {
+            Console.WriteLine(this + "Interact with" + water);
         }
     }
 ```	
 
 Создаем абстрактный класс, чтобы получить фабрики для созданных выше классов:
 
-```java
-public abstract static class AbstractFactory{
-        abstract AnimalSound getSound(String soundType);
+```C#
+    public abstract class AbstractBottle
+    {
+        public abstract void Interact(AbstractWater water);
     }
 ```
 
-Создаем классы-фабрики, наследующие класс AbstractFactory, чтобы создавать объект конкретного класса, базирующийся на заданной информации:
+Создаем класс - генератор фабрики:
 
-```java
-public static class SmallAnimalSoundFactory extends AbstractFactory{
-        @Override
-        public AnimalSound getSound(String soundType) {
-            if (soundType == null) {
-                return null;
-            }
-            if (soundType.equalsIgnoreCase("CAT")) {
-                return new Cat();
-            } else if (soundType.equalsIgnoreCase("DOG")) {
-                return new Dog();
-            }
-            return null;
-        }
+```C#
+    public abstract class AbstractFactory
+    {
+        public abstract AbstractBottle CreateBottle();
+        public abstract AbstractWater CreateWater();
     }
 ```
 
-Создаем класс - генератор фабрики, чтобы получить фабрики путем передачи таких данных, как название животного:
+Используем класс - генератор фабрик, чтобы получить фабрики конкретных классов
 
-```java
-public static class FactoryProducer{
-        public static AbstractFactory getFactory(boolean bigOrNot){
-            if(bigOrNot){
-                return new BigAnimalSoundFactory();
-            }else{
-                return new SmallAnimalSoundFactory();
-            }
-        }
-    }
-```
-
-Используем класс - генератор фабрик, чтобы получить фабрики конкретных классов, передавая информацию о животном
-
-```java
-AbstractFactory smallAnimalSoundFactory = FactoryProducer.getFactory(false);
-        AnimalSound animalSound1 = smallAnimalSoundFactory.getSound("CAT");
-        animalSound1.say();
-        AnimalSound animalSound2 = smallAnimalSoundFactory.getSound("DOG");
-        animalSound2.say();
+``` C#        
+	    Client client = null;
+            client = new Client(new CocaColaFactory());
+            client.Run();
+            client = new Client(new PepsiFactory());
+            client.Run();
+        Console.ReadKey();
 ```
 
 Получаем:
 
-```java
-Meow
-Gav
+```C#
+AbstractFactory.ConcreteClass.CocaColaBottleInteract withAbstractFactory.ConcreteClass.CocaColaWater
+AbstractFactory.ConcreteClass.PepsiBottleInteract withAbstractFactory.ConcreteClass.PepsiWater
+
 ```
-
-# Lab1_TMPS_Factory
-
-Подобно AbstractFactory мы создаем интерфейс, наследуем от него классы и т.д. Основное различие между методом "factory" и "абстрактным factory" заключается в том, что метод factory является единственным методом, а абстрактный factory является объектом. 
-С шаблоном Factory вы создаете реализации (Cat, Dog, Cow и т.д.) определенного интерфейса - в нашем случае AnimalSound. С помощью шаблона Abstract Factory мы создаем реализации конкретного интерфейса Factory. Каждый из них знает, как создавать разные виды звуков животных.
 
 # Lab1_TMPS_Prototype
 
-Подобно примеру выше с AbstractFactory создаем интерфейс и наследуем от него классы. Затем создаем коллекцию, чтобы хранить данные о классах:
+Подобно примеру выше с AbstractFactory создаем класс и наследуем от него классы :
 
-```java
-private static Hashtable<String, AnimalSound> soundMap = new Hashtable<>();
+```C#
+    class Prototype
+    {
+        public string Class { get; set; }
+        public string State { get; set; }
+        public Prototype Clone()
+        {
+            return MemberwiseClone() as Prototype;
+        }
+    }
 ```
 
-И присваиваем классам определенные идентификаторы(1 - Cat, 2 - Dog):
+И присваиваем классам определенные идентификаторы:
 
-```java
-public static void loadCache() {
-            Cat cat = new Cat();
-            cat.setId("1");
-            soundMap.put(cat.getId(), cat);
-            Dog dog = new Dog();
-            dog.setId("2");
-            soundMap.put(dog.getId(), dog);
-        }
-```
-
-Метод для того, чтобы вызвать класс по Id:
-
-```java
-public static AnimalSound getSound(String soundId) {
-            AnimalSound cachedSound = soundMap.get(soundId);
-            return (AnimalSound) cachedSound.clone();
-        }
+```C#
+            Prototype human = prototype.Clone() as Prototype;
+            human.Class = "human";
+            human.State += " Common signs of a person";
+            Console.WriteLine(human.Class + " " + human.State);
 ```
 
 Затем вызываем базу классов и достаем оттуда объект нужного класса:
 
-```java
-			AnimalSoundCache.loadCache();
-            AnimalSound clonedSound1 = AnimalSoundCache.getSound("1");
-            System.out.println("Animal Sound is: " + clonedSound1.getName());
+```C#
+            var adam = human.Clone();
+            adam.State = "Adam";
+            Console.WriteLine(adam.State+" "+ adam.Class);
 ```
 
-# Lab1_TMPS_Builder
+В результате получим вывод : 
 
-Создаем модель данных: id, имя, фамилия, год рождения, адрес, индекс, страна, номер телефона. Id будет автоинкрементироваться при добавлении новых данных.
+```C#
+human  Common signs of a person
+Adam human
+```
 
-```java
-public static class Builder {
-        private static int id = 1000;
-        private String surname;
-        private String name;
-        private String birthYear;
-        private String address;
-        private String zipCode;
-        private String country;
-        private String phoneNumber;
+# Lab1_TMPS Builder + Factory method
 
-        public Builder() {
+Создаем модель данных машина , в которой может быть : Мультимедиа система , колёса , двигатель , кузов , степень роскошности , система безопасности при аварии.
+
+```C#
+    abstract class CarBuilderBase
+    {
+        protected Car Car;
+
+        protected CarBuilderBase()
+        {
+            Car = new Car();
         }
-```
 
-Информация добавляется следующим образом(подобно сеттеру):
-
-```java
-public Builder addSurname(String surname) {
-            this.surname = surname;
-            return this;
+        public Car GetCar()
+        {
+            return Car;
         }
+
+        public abstract void BuildMultimedia();
+        public abstract void BuildWheels();
+        public abstract void BuildEngine();
+        public abstract void BuildFrames();
+        public abstract void BuildLuxury();
+        public abstract void BuildSafety();
+    }
 ```
 
-метод build() возвращает собранный объект модели данных:
+Информация добавляется следующим образом:
 
-```java
-public Lab1_TMPS_Builder.Builder build() {
-            Lab1_TMPS_Builder.Builder personalData = new Lab1_TMPS_Builder.Builder();
-            personalData.id = this.id;
-            personalData.surname = this.surname;
-            personalData.name = this.name;
-            personalData.birthYear = this.birthYear;
-            personalData.address = this.address;
-            personalData.zipCode = this.zipCode;
-            personalData.country = this.country;
-            personalData.phoneNumber = this.phoneNumber;
-            return personalData;
+```C#
+    class Car
+    {
+        public string Engine { get; set; }
+        public string Frame { get; set; }
+        public string Wheels { get; set; }
+        public string Luxury { get; set; }
+        public string Multimedia { get; set; }
+        public string Safety { get; set; }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.AppendFormat("Frame: {0}\n", Frame);
+            sb.AppendFormat("Engine: {0}\n", Engine);
+            sb.AppendFormat("Wheels: {0}\n", Wheels);
+            sb.AppendFormat("Multimedia: {0}\n", Multimedia);
+            sb.AppendFormat("Safety: {0}\n", Safety);
+            sb.AppendFormat("Luxury: {0}\n", Luxury);
+
+            return sb.ToString();
         }
+    }
 ```
 
-Builder вызывается следующим образом(параметры методов вводятся заранее с клавиатуры):
+При сборке данные для каждой марки машины берутся из соответствующих классов AudiBuilder и VolkswagenBuilder которые наследуются от главного класа строителя:
 
-```java
-Builder personalData = new Builder()
-                .addSurname(entered_surname)
-                .addName(entered_name)
-                .addBirthYear(entered_birthYear)
-                .addAddress(entered_address)
-                .addCountry(entered_country)
-                .addZipCode(entered_zipCode)
-                .addPhoneNumber(entered_phonenumber)
-                .build();
-        return personalData;
+```C#
+class AudiBuilder : CarBuilderBase
+    {
+        public AudiBuilder() : base()
+        {
+        }
+
+        public override void BuildMultimedia()
+        {
+            Car.Multimedia = "Audi MMI Multimedia";
+        }
+
+        public override void BuildWheels()
+        {
+            Car.Wheels += " 18\" Audi Wheel";
+        }
+
+        public override void BuildEngine()
+        {
+            Car.Engine = "2.0 TFSI";
+        }
+
+        public override void BuildFrames()
+        {
+            Car.Frame = "Audi frame";
+        }
+
+        public override void BuildLuxury()
+        {
+            Car.Luxury = "Audi Exclusive Interior";
+        }
+
+        public override void BuildSafety()
+        {
+            Car.Safety = "Side Assist";
+        }
+    }
+```
+
+Однако возможно такая ситуация что машину изначально нужно собрать по самой дешёвой комплектации, а уже после добавить какие-нибудь вещи, для этого будем использовать паттерн Factory, создадим класс CarFactoryBase
+
+```C#
+    abstract class CarFactoryBase
+    {
+        protected readonly CarBuilderBase CarBuilder;
+
+        protected CarFactoryBase(CarBuilderBase builder)
+        {
+            CarBuilder = builder;
+        }
+
+        public abstract Car Construct();
+    }
+```
+
+Сделаем две возможных сборки машины дешёвую(cheap) и максимальную(luxury):
+Примеру классов максимальной и минимальной комплектации :
+
+```C#
+    class LuxuryCarFactory : CarFactoryBase
+    {
+        public LuxuryCarFactory(CarBuilderBase builder) : base(builder)
+        {
+        }
+
+        public override Car Construct()
+        {
+            CarBuilder.BuildFrames();
+            CarBuilder.BuildEngine();
+            CarBuilder.BuildWheels();
+            CarBuilder.BuildSafety();
+            CarBuilder.BuildMultimedia();
+            CarBuilder.BuildLuxury();
+
+            return CarBuilder.GetCar();
+        }
+    }
+```
+
+```C#
+    class CheapCarFactory : CarFactoryBase
+    {
+        public CheapCarFactory(CarBuilderBase builder) : base(builder)
+        {
+        }
+
+        public override Car Construct()
+        {
+            CarBuilder.BuildFrames();
+            CarBuilder.BuildEngine();
+            CarBuilder.BuildWheels();
+            CarBuilder.BuildSafety();
+
+            return CarBuilder.GetCar();
+        }
+    }
+```
+Вызывать методы сборки машины будем следующим образом, сначало соберём минимальную сборку а после этого добавим к примеру Multimedia и Luxury пакет: 
+
+```C#
+            Console.WriteLine("Cheap Volkswagen:");
+            CarFactoryBase constructor = new CheapCarFactory(new VolkswagenBuilder());
+            var car = constructor.Construct();
+            Console.WriteLine(car);
+
+            Console.WriteLine("Luxury Volkswagen:");
+            constructor = new LuxuryCarFactory(new VolkswagenBuilder());
+            car = constructor.Construct();
+            Console.WriteLine(car);
 ```
 
 #Lab1_TMPS_Singleton
 
-SingleObject класс будет иметь свой статичный экземпляр и приватный конструктор. В этом классе есть статичный метод, чтобы получить этот экземпляр.
+SingleObject класс будет иметь свой статичный экземпляр и приватный конструктор. В этом классе есть статичный метод, чтобы получить этот экземпляр. Для проверки создадим два экземпляра этого класса и если он реализован правильно то полученная ХЭШ-сумма должна быть одинакова
 
-```java
-public class Lab1_TMPS_Singleton {
-    public static class Singleton {
-        private static Singleton instance = new Singleton();
-
-        private Singleton() {
+```C#
+    public sealed class Hash
+    {
+       private static Hash bellConnection;
+        private Hash ()
+        {
         }
+        public static Hash Instance()
+        {
+            if (bellConnection == null)
+            {
+                bellConnection = new Hash();
+            }
 
-        public static Singleton getInstance() {
-            return instance;
+            return bellConnection;
         }
-
-        public void showMessage() {
-            System.out.println("This is singleton example. Please approve it!");
-        }
-    }
-
-    public static void main(String[] args) {
-        Singleton singleObject = new Singleton();
-        singleObject.showMessage();
-    }
-}
 
 ```
 
+Создадим два экземпляра и сверим ХЭШ-сумму: 
+```C#
+        static void Main(string[] args)
+        {
+
+            Hash s1 = Hash.Instance();
+            Hash s2 = Hash.Instance();
+            Console.WriteLine(s1.GetHashCode());
+            Console.WriteLine(s2.GetHashCode());
+
+            Console.ReadKey();
+        }
+```
+Хэш сумма совпала.
 
 
 ## Вывод
-В ходе данной лабораторной работы мы изучили и реализовали порождающие паттерны, они нам упрощают и структурируют код
+В ходе данной лабораторной работы мы изучили и реализовали порождающие паттерны, они упрощают структурный код программы и помогают избежать нежелательных последствий в работе программного продукта.
