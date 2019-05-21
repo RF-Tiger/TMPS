@@ -1,0 +1,254 @@
+﻿
+a,img {
+
+text-decoration: none;
+color: #015ba7;
+
+
+}
+
+body, td, th {
+
+	font-family: Arial, Helvetica, sans-serif;
+
+	font-size: 12px;
+
+	color: #404040;
+
+}
+
+form {
+
+	margin: 0;
+
+	padding: 0;
+
+}
+
+h1 {
+
+	border-bottom: 1px solid #EBEBEB;
+
+	color: #1a4d80;
+
+	font-size: 24px;
+
+	font-weight: 400;
+
+	margin: 0 0 12px;
+
+	padding: 0 0 3px;
+
+}
+
+h2 {
+
+	border-bottom: 1px solid #F5F5F5;
+
+	color: #333;
+
+	font-size: 18px;
+
+	font-weight: 400;
+
+	margin: 0 0 5px;
+
+	padding: 10px 0 3px;
+
+}
+
+h3 {
+
+	color: #666;
+
+	font-size: 16px;
+
+	font-weight: 700;
+
+	margin: 0;
+
+	padding: 10px 0 5px;
+
+}
+
+h4 {
+
+	color: #666;
+
+	font-size: 14px;
+
+	font-weight: 300;
+
+	margin: 0;
+
+	padding: 10px 0 5px;
+
+}
+
+hr {
+
+	background-color: #EBEBEB;
+
+	border: 0;
+
+	border-top: 1px solid #EBEBEB;
+
+	height: 0;
+
+	margin: 10px 0;
+
+	overflow: hidden;
+
+}
+
+
+
+
+ul.menu {
+
+	margin: 0;
+
+	padding: 0;
+
+	list-style: none;
+
+	width: 818px;
+
+	height: 34px;
+
+}
+
+ul.menu li {
+
+	float: left;
+
+}
+
+
+ul.menu li a {
+
+	display: block;
+
+	height: 34px;
+
+	text-indent: -9999px;
+
+	outline: none;
+
+	text-decoration: none;
+
+	background: url(images/Hor_Menu.png) 0 0 no-repeat;
+
+}
+
+
+li#homepage a {
+
+	background-position: 0px 0;
+
+	width: 70px;
+
+}
+li#categories a {
+
+	background-position: -70px 0;
+
+	width: 87px;
+
+}
+
+li#hbuys a {
+
+	background-position: -157px 0;
+
+	width: 80px;
+
+}
+
+li#search a {
+
+	background-position: -237px 0;
+
+	width: 68px;
+
+}
+
+li#space a {
+
+	background-position: -305px 0;
+
+	width: 349px;
+
+}
+
+li#cart a {
+
+	background-position: -654px 0;
+
+	width: 164px;
+
+}
+
+li#homepage a:hover {
+
+	background-position: 0px -34px;
+
+	width: 70px;
+
+}
+li#categories a:hover {
+
+	background-position: -70px -34px;
+
+	width: 87px;
+
+}
+
+li#hbuys a:hover {
+
+	background-position: -157px -34px;
+	
+	width: 80px;
+
+}
+
+li#search a:hover {
+
+	background-position: -237px -34px;
+
+	width: 68px;
+
+}
+
+li#space a:hover {
+
+	background-position: -305px -34px;
+
+	width: 349px;
+
+}
+
+li#cart a:hover {
+
+	background-position: -654px -34px;
+
+	width: 164px;
+
+}
+.style2 {
+				text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
